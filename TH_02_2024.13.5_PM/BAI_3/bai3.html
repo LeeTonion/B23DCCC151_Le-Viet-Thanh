@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="slideshow-container">
+        <div class="slides">
+          <img src="https://static.kinhtedothi.vn/w960/images/upload/2024/03/27/dnt-3063.jpg" alt="Slide 1">
+          <img src="https://image.plo.vn/w850/Uploaded/2024/bivxpcwk/2024_05_13/thai-lan-tq-1660.jpg.webp" alt="Slide 2">
+          <img src="https://icdn.24h.com.vn/upload/2-2024/images/2024-05-13/2-740-1715560474-323-width740height492.jpg" alt="Slide 3">
+        </div>
+        <button class="prev">&#10094; Back</button>
+        <button class="next">Next &#10095;</button>
+      </div>
+      <script>
+$(document).ready(function() {
+  var slideIndex = 0;
+  showSlides();
+
+  function showSlides() {
+    var slides = $(".slides img");
+    for (var i = 0; i < slides.length; i++) {
+      slides.eq(i).css("display", "none");
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) { slideIndex = 1 }
+    slides.eq(slideIndex - 1).css("display", "block");
+    setTimeout(showSlides, 10000); 
+  }
+
+  $(".prev").click(function() {
+    slideIndex--;
+    showSlides();
+  });
+
+  $(".next").click(function() {
+    slideIndex++;
+    showSlides();
+  });
+});
+      </script>
+  </body>
+</html>

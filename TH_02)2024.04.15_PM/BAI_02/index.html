@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1000,25,32,4,345,4632,474,84,25,100,131,1223]
+
+        function max(a)
+        {
+            var max=a[0];
+            for (var i = 0 ;i<=a.length-1;i++)
+            {
+                if (max < a[i]){max=a[i]}
+            }
+            return max;
+        }
+        function so_chinh_phuong(a){
+            for (var i = 0; i < a.length; i++) 
+            {
+                if (Number.isInteger(Math.sqrt(a[i])) == false) 
+                {
+                    a.splice(i,1);
+                    i--;
+                }
+            }
+            return a;
+        }
+        function trung_binh_cong(a){
+            var tong =0;
+            for (var i = 0; i < a.length; i++) 
+            {
+                tong += a[i];
+            }
+            var tbc=tong/a.length
+            for (var j = 0; j < a.length; j++) 
+            {
+               if(a[j]<= tbc) 
+               {
+                a.splice(j,1);
+                j--;
+               }
+            }
+            return a;
+        }
+        function trung_binh_cong_ko_am(a){
+            var tong =0;
+            var b=0;
+            for (var i = 0; i < a.length; i++) 
+            {   if (a[i] >= 0)
+                {
+                    tong += a[i];
+                    b+=1;
+                } 
+            }
+            var c=tong/b;
+            return c ;
+            }   
+        document.write(max(arr)+"<br>");
+        document.write(so_chinh_phuong(arr)+"<br>");
+        document.write(trung_binh_cong_ko_am(arr)+"<br>");
+        document.write(trung_binh_cong(arr)+"<br>");
+
+    </script>
+</body>
+</html>

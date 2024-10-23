@@ -1,0 +1,23 @@
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    height: 250px;
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+}
+.product .images{
+max-width: 100%;
+max-height: 100%;
+}
+
+.product:hover .name {
+    color: blue;
+}
+.product:hover{
+    border-color: rgb(30, 245, 2);
+}
+.product:hover .price {
+    color: red;
+}

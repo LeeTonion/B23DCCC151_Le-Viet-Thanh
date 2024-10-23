@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = [1,2,3,3,3,256,3,3,467,567,4324,3,4324,574,652,458,124]
+        
+            
+            
+            function sắp_sếp(a)
+            {
+                let temp;
+                for(let i=0;i<(a.length-1);i++)
+                {
+                    for(let j=i+1;j<a.length;j++)
+                    {
+                        if(a[j]>a[j+1])
+                        {
+                             temp =a[j];
+                            a[j]=a[j+1];
+                            a[j+1]=temp;
+                        }
+                    }
+                }
+                return a;
+            } 
+            function loại_số_trùng(a){
+                for(var i=0;i<a.length-1;i++)
+                {
+                    for(var j=i+1;j<a.length;j++)
+                    {
+                        if(a[i]==a[j]){
+                            a.splice(j,1);
+                            j--;}
+                    }
+                }
+                return a;
+            }
+            document.write(sắp_sếp(arr)+"<br>")
+            document.write(loại_số_trùng(arr)+"<br>")
+    </script>
+</body>
+</html>
