@@ -18,13 +18,25 @@ users.forEach(users=> {
 });
 app.get('/users',(req,res)=>{
     res.json({
-        message: 'Tên người dùng đã được thay đổi',
+        message: 'get users',
         data: users
 })
 })
-app.get('/users',(req,res)=>{
+app.post('/users',(req,res)=>{
     res.json({
-        message: 'Tên người dùng đã được thay đổi',
+        message: 'post users',
+        data: users
+})
+})
+app.put('/users',(req,res)=>{
+    res.json({
+        message: 'put users',
+        data: users
+})
+})
+app.delete('/users',(req,res)=>{
+    res.json({
+        message: 'delete users',
         data: users
 })
 })
