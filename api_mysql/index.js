@@ -1,11 +1,13 @@
 const express = require('express');
+const bodyParser = require('body-parser');
+const todoRoutes = require('./src/routers/todoRoutes');
+const userRoutes = require('./src/routers/userRoutes');
 const app = express();
 const port = 3002;
-const todosRouter = require('./src/routers/todolist');
 
-app.use(express.json());
-
-app.use('/todos', todosRouter);
+app.use(bodyParser.json()); 
+app.use('/api', todoRoutes); 
+app.use('/user',userRoutes)
 app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+    console.log(`Server running at http://localhost:${port}`);
 });
