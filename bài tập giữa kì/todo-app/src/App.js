@@ -4,6 +4,8 @@ import { MdDelete } from "react-icons/md";
 import { MdOutlineEditCalendar } from "react-icons/md";
 import axios from 'axios';
 import { format } from 'date-fns';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 
 
@@ -17,7 +19,8 @@ function App() {
   const [currentEdit, setCurrentEdit] = useState("");
   const [currentEditedItem, setCurrentEditedItem] = useState("");
 
-
+  
+  
   const fetchTodos = () => {
     axios.get('/api/todos')
       .then(response => {
@@ -52,10 +55,11 @@ function App() {
           setNewDescription('');
           setDate('');
           fetchTodos();
+          toast.success("Thêm công việc thành công!");
         })
         .catch(error => console.error("Lỗi khi thêm todo:", error));
     } else {
-      alert("Vui lòng nhập đầy đủ thông tin");
+      toast.error("Vui lòng nhập đầy đủ thông tin");
     }
   };
   
@@ -65,10 +69,10 @@ function App() {
       .then(() => {
         const updatedTodos = allTodos.filter(todo => todo.id !== id);
         setTodos(updatedTodos);
+        toast.success("Công việc đã được xoá khỏi todolist !");
       })
       .catch(error => {
         console.error("Lỗi khi xóa todo:", error);
-        alert("Đã xảy ra lỗi khi xóa!");
       });
   };
 
@@ -77,10 +81,10 @@ function App() {
       .then(() => {
         const updatedTodos = completedTodos.filter(todo => todo.id !== id);
         setCompletedTodos(updatedTodos);
+        toast.success("Xóa công việc thành công!");
       })
       .catch(error => {
         console.error("Lỗi khi xóa todo:", error);
-        alert("Đã xảy ra lỗi khi xóa!");
       });
   };
 
@@ -100,17 +104,19 @@ function App() {
         setNewDescription('');
         setDate('');
         fetchCompleteTodos();
+        toast.success("Công việc đã hoàn thành!");
       })
       .catch(error => console.error("Lỗi khi thêm todo:", error));
+
 
   };
 const updateTodo = (id, updatedData) => {
   axios.put(`/api/todos/${id}`, updatedData)
     .then(response => {
-      // Thay thế todo có id tương ứng trong danh sách todos
+
       setTodos( allTodos.map(todo => (todo.id === id ? response.data : todo)));
       fetchTodos();
-      alert("Cập nhật todo thành công!");
+      toast.success("Cập nhật công việc thành công!");
     })
     .catch(error => {
       console.error("Lỗi khi cập nhật dữ liệu:", error);
@@ -184,7 +190,18 @@ const updateTodo = (id, updatedData) => {
   
   return (
     <div className="App">
-      <h1>My work 🎯</h1>
+      <h1>My work</h1>
+      <ToastContainer  
+      position="top-right"
+      autoClose={3000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"/>
       <div className='todo-wrapper'>
         <div className='todo_input'>
           <div className="todo_input_item">
